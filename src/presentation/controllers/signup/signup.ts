@@ -32,18 +32,16 @@ export class SignupController implements Controller {
             return badRequest(new InvalidParamError('email'))
         }
 
-        this.addAccount.add({
+        const account = this.addAccount.add({
             name,
             email,
             password
         })
-
-        return {
+        return { 
             statusCode: 200,
-            body: {
-                message: 'Account created successfully'
-            }
+            body: account
         }
+
 
         } catch (error) {
             return serverError()
